@@ -1,4 +1,4 @@
-import { Action, createStore } from "redux";
+/* import { Action, createStore } from "redux";
 
 const initialState = {
   counter: {
@@ -29,8 +29,11 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(reducer, initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const store = createStore(
+  reducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
-export default store
+export default store;
+ */
