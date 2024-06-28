@@ -3,11 +3,23 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { connect } from 'react-redux'
 
+import selectors from './infra/redux-old/selectors'
+import actions from './infra/redux-old/actions'
+
 interface AppProps {
   count: number
+  increment: () => any
+  incrementAmmount: ({payload}: any) => any
 }
 
-function App({count}: AppProps) {
+function App({count,increment,incrementAmmount}: AppProps) {
+
+const handleCountClick = ()=> {
+  increment()
+}
+const handleCountClickAmmount = ()=> {
+  incrementAmmount({payload:10})
+}
 
   return (
     <>
@@ -21,8 +33,11 @@ function App({count}: AppProps) {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => dispatch({type: "counter/increment"})}>
+        <button onClick={handleCountClick}>
           count is {count}
+        </button>
+        <button onClick={handleCountClickAmmount}>
+          Increment ammount
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
@@ -35,11 +50,5 @@ function App({count}: AppProps) {
   )
 }
 
-const withCounter = () => connect( ( state : {
-  counter: {
-    value: number
-  }
-}) =>  ({ count : state.counter.value} ))
 
-
-export default withCounter()(App)
+export default connect(selectors,actions)(App)

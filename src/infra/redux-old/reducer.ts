@@ -6,7 +6,7 @@ const initialState = {
   },
 };
 
-const reducer = (state = initialState, action : Action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "counter/increment":
       return {
@@ -16,12 +16,12 @@ const reducer = (state = initialState, action : Action) => {
           value: state.counter.value + 1,
         },
       };
-    case "counter/decrement":
+    case "counter/incrementAmmount":
       return {
         ...state,
         counter: {
           ...state.counter,
-          value: state.counter.value - 1,
+          value: state.counter.value + action.payload,
         },
       };
     default:
@@ -29,6 +29,8 @@ const reducer = (state = initialState, action : Action) => {
   }
 };
 
-export const store = createStore(reducer, initialState,
+const store = createStore(reducer, initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+
+export default store
